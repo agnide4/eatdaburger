@@ -1,0 +1,27 @@
+{
+  "name": "eatdaburger",
+  "version": "1.0.0",
+  "description": "Lets you add a burger to the menu and devour it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev":"nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agnide4/eatdaburger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agnide4/eatdaburger/issues"
+  },
+  "homepage": "https://github.com/agnide4/eatdaburger#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "mysql": "^2.18.1"
+  }
+}
