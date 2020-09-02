@@ -6,7 +6,7 @@ connection = sql.createConnection({
     host: "localhost",
     user: "root",
     password: process.env.SQL_SECRET,
-    database: "burgers_db"
+    database: "burger_db"
 
 });
 

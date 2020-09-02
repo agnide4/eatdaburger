@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser  =require("body-parser")
-const exphbrs = require("express-handlebars")
+const exphbrs = require("express-handlebars");
+const router = require("./controllers/burgers_controller");
 
 //using app variable to set up express
 const app = express()
@@ -26,7 +27,7 @@ app.set("view engine", "handlebars")
 
 //Setting up routes
 let routes = ("./controllers/burgers_controller.js")
-app.use(routes)
+app.use(router)
 
 
 app.listen(PORT, function(){
