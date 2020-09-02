@@ -1,6 +1,8 @@
 //Add aon click event functions here
+console.log("hrer")
 $(function(){
-    $(".menu").on("submit"), function(event){
+    console.log("in")
+    $(".burgerWish").on("submit"), function(event){
         event.preventDefault();
         
         const newBurger = {
@@ -20,7 +22,7 @@ $(function(){
     }
 
 
-    $(".devoured").on("click", function(event){
+    $(".devour").on("click", function(event){
         event.preventDefault()
 
         let id = $(this).data("id");

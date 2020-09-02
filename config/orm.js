@@ -2,7 +2,7 @@ const connection = require("./connection")
 
 function createQmarks(num){
     let arr = []
-    for (i = 0; i<arr.length; i++){
+    for (i = 0; i<num; i++){
         arr.push("?")
     }
     return arr.toString();
@@ -11,8 +11,8 @@ function createQmarks(num){
 function translateSQL(obj){
     let arr = []
     for (let key in obj){
-        let value = ob[key];
-        if(Object.hasOwnProperty.call(ob, key)){
+        let value = obj[key];
+        if(Object.hasOwnProperty.call(obj, key)){
             if(typeof value === "string" && value.indexOf(" ") >= 0){
                 value = "'" + value + "'"
             }
@@ -24,7 +24,7 @@ function translateSQL(obj){
 
 const orm = {
     findAll: function(table, cb){
-        let dbQuery = "SELECT * FROM" + table + ";" ;
+        let dbQuery = "SELECT * FROM " + table + ";" ;
         connection.query(dbQuery, (err, res)=>{
             if(err){
                 throw err;
@@ -75,3 +75,5 @@ const orm = {
         
     }
 }
+
+module.exports = orm;

@@ -5,12 +5,44 @@
       </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 menu"></div>
-            <div class="col-md-6 devoured"></div>
+            <div class="col-md-6 menu">
+                <div class="panel panel-defaut">
+                    <div class="panel-heading"><h3>Burgers ready to be devoured</h3></div>
+                    <div class="panel-body">
+                        <ul>
+                            {{#each burgers}}
+                            {{#unless devoured}}
+                            <span>{{this.id}} - {{this.burgerName}}</span>
+                            <button type="button" class="devour" data-id="{{this.id}}"
+                                    data-newDevoured="{{devour}}">Devour it</button>
+                            <hr>
+                            {{/unless}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 devoured">
+                <div class="panel panel-defaut">
+                    <div class="panel-heading"><h3>Burgers in your belly</h3></div>
+                    <div class="panel-body">
+                        <ul>
+                            {{#each burgers}}
+                            {{#if devoured}}
+                            <span>{{this.id}} - {{this.burgerName}}</span>
+                            <button type="button" class="trashit" data-id="{{this.id}}"
+                                    data-newDevoured="{{devour}}">Get it out</button>
+                            <hr>
+                            {{/if}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group burgerWish">
             <label for="Burgers">What do you want to eat?:</label>
-            <textarea class="form-control" rows="3" id="burger"></textarea>
+            <textarea class="form-control" rows="3" id="newBurger"></textarea>
             <button type="submit" class="btn btn-primary disabled btn-block orderBurger">Add burger to menu</button>
         </div>
     </div>
