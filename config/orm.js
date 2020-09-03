@@ -46,7 +46,7 @@ const orm = {
         +") ";
         console.log(dbQuery)
 
-        connection.query(dbQuery, (err, res)=>{
+        connection.query(dbQuery, val, (err, res)=>{
             if(err){
                 throw err;
             }
