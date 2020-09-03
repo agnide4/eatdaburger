@@ -3,7 +3,7 @@ const connection = require("./connection")
 function createQmarks(num){
     let arr = []
     for (i = 0; i<num; i++){
-        arr.push("?")
+        arr.push(" ? ")
     }
     return arr.toString();
 }
@@ -33,12 +33,17 @@ const orm = {
         })
     },
 
-    insertOne: function(table, col, val, cb){
+    insert: function(table, col, val, cb){
+        console.log(val, table, col)
         let dbQuery =   
-        "INSERT INTO" 
-        + table + 
-        "(" + col.toString() + ")" +
-        "VALUES (" + createQmarks(valc.length) + ")";
+        "INSERT INTO " +
+        table + 
+        " (" 
+        + col.toString() + 
+        ") " +
+        "VALUES (" +  
+        createQmarks(val.length) 
+        +") ";
         console.log(dbQuery)
 
         connection.query(dbQuery, (err, res)=>{
@@ -50,10 +55,10 @@ const orm = {
 
     },
 
-    updateOne: function(table, colVal, condition, cb){
-        let dbQuery = "UPDATE" + table + 
-                      "SET" + translateSQL(colVal) + 
-                      "WHERE" + condition
+    update: function(table, colVal, condition, cb){
+        let dbQuery = "UPDATE " + table + 
+                      " SET " + translateSQL(colVal) + 
+                      " WHERE " + condition
 
         connection.query(dbQuery, (err, res)=>{
             if(err){
@@ -65,7 +70,7 @@ const orm = {
     },
 
     delete: function(table, condition, cb){
-        let dbQuery = "DELETE FROM" + table + "WHERE" + condition
+        let dbQuery = "DELETE FROM " + table + " WHERE " + condition
         connection.query(dbQuery, (err, res)=>{
             if(err){
                 throw err;

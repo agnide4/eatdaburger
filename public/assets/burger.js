@@ -2,9 +2,10 @@
 console.log("hrer")
 $(function(){
     console.log("in")
-    $(".burgerWish").on("submit"), function(event){
+    console.log()
+    $("#me").on("submit", function(event){
         event.preventDefault();
-        
+        console.log("clciked")
         const newBurger = {
             burgerName: $("#newBurger")
             .val()
@@ -12,14 +13,14 @@ $(function(){
             devoured: 0
         }
 
-        $.ajax("api/burgers",{
+        $.ajax("/api/burgers",{
             type: "POST",
             data: newBurger
         }).then(function(){
             console.log("Added new burger");
             location.reload();
         })
-    }
+    })
 
 
     $(".devour").on("click", function(event){
@@ -30,7 +31,7 @@ $(function(){
             devoured: 1
         }
 
-        $.ajax("api/burgers/" + id, {
+        $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: devouredState
         }).then(function(){
@@ -46,7 +47,7 @@ $(function(){
 
         let id = $(this).data("id");
 
-        $.ajax("api/burgers/" + id, {
+        $.ajax("/api/burgers/" + id, {
             type: "DELETE",
         }).then(function(){
             console.log("THRASHED");

@@ -16,22 +16,23 @@ router.get("/", (req, res) =>{
     
 })
 
-router.post("/api/burgers", (req, res) => {
-    burger.insert(function(data){
+router.post("/api/burgers", function (req, res) {
+    burger.insert(
         ["burgerName", "devoured"],
-        [req.body.burgerName, req.body.devoured],
+        [(req.body.burgerName), (req.body.devoured)],
         function(result){
             res.json({id: result.insertid})
         }
         
-    })
+    )
 })
 
-router.put("api/burgers/:id", function(req, res){
+router.put("/api/burgers/:id", function(req, res){
     let condition = "id =" + req.params.id;
     console.log("cond", condition)
+    console.log(burger)
     burger.update({devoured: req.body.devoured}, condition, function(result){
-        if((result, changedRows ===0)){
+        if((result.changedRows === 0)){
             return res.status(404).end()
         }
         else{
@@ -40,11 +41,13 @@ router.put("api/burgers/:id", function(req, res){
     })
 })
 
-router.delete("api/burgers/:id", function(req, res){
+router.delete("/api/burgers/:id", function(req, res){
     let condition = "id =" + req.params.id;
     console.log("cond", condition)
-    burger.delete({devoured: req.body.devoured}, condition, function(result){
-        if((result, changedRows === 0)){
+    
+    burger.delete(condition, function(result){
+        console.log(result)
+        if((result.affectedRows === 0)){
             return res.status(404).end()
         }
         else{
