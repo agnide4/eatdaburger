@@ -1,6 +1,4 @@
 var sql = require("mysql")
-require("dotenv").config()
-require("../server")
 
 let connection;
 if (process.env.JAWSDB_URL){
